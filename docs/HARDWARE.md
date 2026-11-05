@@ -62,6 +62,29 @@ Ingenic T31 ports are 32 pins each: PA 0–31, PB 32–63, PC 64–95, PD 96–1
 - GPIO 43 → PB11 (WLAN IRQ)
 - GPIO 82 → PC18 (WiFi reset)
 
+## Peripheral GPIOs & board features
+
+Only the **IR** lines are direct T31 GPIOs (from `ircut_ctrl.sh`, via `gpiotest`/sysfs):
+
+| Function | GPIO | Port | Notes |
+|---|---|---|---|
+| IR-cut A | **52** | PB20 | H-bridge pair, pulsed |
+| IR-cut B | **53** | PB21 | |
+| IR LED (850nm) | **38** | PB6 | active-high |
+
+Everything else — **status LED, PIR, button/wake, battery/charge** — is handled by
+the **Hi3861L MCU**, not T31 GPIOs (`addx_mcu_daemon`: `set_led_ctrl`,
+`set_pir_switch`, `set_pir_sensivity`, `get_wakeup_info`, `get_battery_status`).
+See [`MCU_PROTOCOL.md`](MCU_PROTOCOL.md). **Implication:** PIR motion-wake, status
+LED, button and battery need the MCU protocol, not GPIO config — a Thingino build
+does WiFi + IR-cut + IR-LED out of the box, but not the battery-cam features.
+
+Board-folder values:
+- `thingino.json`: `"ircut": "52 53"`, `"ir850": { "pin": 38, "active_low": false }`
+- `uenv.txt`: `gpio_default=38o 52o 53o`
+- Other boot config (from `/proc/cmdline`): sensor 1920×1080, PIR present,
+  tricolor status LED, IR auto, console `ttyS1@115200`.
+
 ## Thingino port implications
 
 - **Board folder:** `configs/cameras/vicohome_cg721_t31zl_hi3881/` (defconfig + DTS).

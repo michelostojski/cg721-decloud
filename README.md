@@ -47,7 +47,7 @@ homeassistant/     HA configuration
 firmware/          repack tooling (operates on YOUR dump; no vendor blobs)
   build_image.py     rootfs repack honoring the checkenv length-prefix gate
   sdkencode.wrap     wrapper that LD_PRELOADs the RTSP tee into sdkencode
-docs/              ARCHITECTURE.md · FIRMWARE.md · HARDWARE.md · NOTES.md
+docs/              ARCHITECTURE.md · FIRMWARE.md · HARDWARE.md · MCU_PROTOCOL.md · NOTES.md
 ```
 
 ## Quick start
