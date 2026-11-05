@@ -4,8 +4,8 @@
 # Log lives on the SD card and is truncated each wake (no NOR flash wear).
 
 SD=/tmp/sdcard
-MQTT=192.168.1.52         # Mosquitto broker (HA) - thumbnail last-view
-RECV=192.168.1.50         # clip receiver host (Docker container on the SER8 host)
+MQTT=192.168.X.X        # Mosquitto broker (HA) - thumbnail last-view
+RECV=192.168.X.X        # clip receiver host (Docker container on the SER8 host)
 LOG=$SD/app.log
 PUSHED=$SD/.pushed
 
