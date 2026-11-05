@@ -1,0 +1,19 @@
+# build outputs
+*.so
+*.o
+
+# device libs you supply locally (proprietary — do NOT commit)
+camera/camlib/
+
+# firmware dumps / images (yours — do NOT commit)
+*.bin
+*.img
+*.cpio
+*.lzo
+
+# local secrets
+secrets.yaml
+*.env
+
+# os cruft
+.DS_Store

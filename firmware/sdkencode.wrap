@@ -1,0 +1,11 @@
+#!/bin/sh
+export H264TEE_PORT=8900
+export H264TEE_CHN=0
+#export H264TEE_LOG=1
+if [ -f /usr/lib/h264tee.so ]; then
+  LD_PRELOAD=/usr/lib/h264tee.so /usr/bin/sdkencode.real "$@" &
+  c=$!
+  sleep 4
+  if kill -0 $c 2>/dev/null; then wait $c; exit $?; fi
+fi
+exec /usr/bin/sdkencode.real "$@"

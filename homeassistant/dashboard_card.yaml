@@ -1,0 +1,35 @@
+# Lovelace card: persistent last-event thumbnail + Live + Clips.
+# Add via Edit Dashboard -> Add Card -> Manual.
+#
+# Entities (check yours in Developer Tools -> States):
+#   camera.cg721        - the MQTT last-view camera (mqtt_camera.yaml). Always
+#                         available, even while the battery camera sleeps.
+#   camera.127_0_0_1    - your live H.264 / go2rtc transcode camera. Rename to
+#                         match yours, or delete the Live button if unused.
+
+type: vertical-stack
+cards:
+  - type: picture-entity
+    entity: camera.cg721
+    name: CG721 — last event
+    show_state: false
+    show_name: true
+    camera_view: auto
+    fit_mode: cover
+    tap_action:
+      action: more-info
+  - type: horizontal-stack
+    cards:
+      - type: button
+        entity: camera.127_0_0_1
+        name: Live
+        icon: mdi:cctv
+        show_state: false
+        tap_action:
+          action: more-info
+      - type: button
+        name: Clips
+        icon: mdi:filmstrip
+        tap_action:
+          action: navigate
+          navigation_path: /media-browser

@@ -1,0 +1,9 @@
+# configuration.yaml — the always-available "last view" camera.
+# The camera publishes its newest event thumbnail (retained) to this MQTT topic
+# on every motion wake; Home Assistant reads it through its existing MQTT
+# integration, so no credentials are needed here.
+
+mqtt:
+  camera:
+    - topic: cg721/snapshot
+      name: CG721

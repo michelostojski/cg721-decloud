@@ -1,0 +1,19 @@
+name: CG721 Clip Receiver
+version: "1.0.1"
+slug: cg721_receiver
+description: Receives CG721 battery-cam event clips/thumbnails and writes them to /media/cg721
+url: https://local/cg721_receiver
+arch:
+  - amd64
+  - aarch64
+init: false
+host_network: true
+map:
+  - type: media
+    read_only: false
+options:
+  port: 8099
+  keep: 300
+schema:
+  port: int
+  keep: int
