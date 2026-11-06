@@ -24,8 +24,9 @@ ZL/ZC/ZX); the ODM product/OTA line says **`T31ZL-Hi3861L`** (build path, SDK
 path, and OTA bucket `…cloudfront.net/T31ZL-Hi3861L/`). Combined with the OTA id
 and the fact OpenIPC shipped "T31ZL Lite" for this unit, the silicon is a
 **T31ZL**. The U-Boot is generic (`Board: ISVP (Ingenic XBurst T31 SoC)`, prompt
-`isvp_t31#`) and exposes no SKU string; the only more-authoritative source would
-be a live efuse read, but every firmware artifact agrees.
+`isvp_t31#`) and exposes no SKU string. **Confirmed by live efuse read** on the
+booted unit: SoC id `t31zl` (efuse `0x10031003`) — settling the naming against the
+`t31z`-series SDK shorthand.
 
 ## WiFi (HiSilicon Hi3861L over SDIO)
 
